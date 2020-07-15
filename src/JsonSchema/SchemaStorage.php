@@ -60,8 +60,12 @@ class SchemaStorage implements SchemaStorageInterface
         // workaround for bug in draft-03 & draft-04 meta-schemas (id & $ref defined with incorrect format)
         // see https://github.com/json-schema-org/JSON-Schema-Test-Suite/issues/177#issuecomment-293051367
         if (is_object($schema) && property_exists($schema, 'id')) {
+            // не ошибка так как описывает формат json схемы для валидации
+            // appchecker CWE-798
             if ($schema->id == 'http://json-schema.org/draft-04/schema#') {
                 $schema->properties->id->format = 'uri-reference';
+            // не ошибка так как описывает формат json схемы для валидации
+            // appchecker CWE-798
             } elseif ($schema->id == 'http://json-schema.org/draft-03/schema#') {
                 $schema->properties->id->format = 'uri-reference';
                 $schema->properties->{'$ref'}->format = 'uri-reference';
