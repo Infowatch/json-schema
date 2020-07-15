@@ -24,6 +24,8 @@ use JsonSchema\Validator;
  */
 class SchemaConstraint extends Constraint
 {
+    // не ошибка так как описывает формат json схемы для валидации
+    // appchecker CWE-798
     const DEFAULT_SCHEMA_SPEC = 'http://json-schema.org/draft-04/schema#';
 
     /**

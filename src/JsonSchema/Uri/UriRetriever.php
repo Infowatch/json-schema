@@ -36,7 +36,11 @@ class UriRetriever implements BaseUriRetrieverInterface
      * @var array A list of endpoints for media type check exclusion
      */
     protected $allowedInvalidContentTypeEndpoints = array(
+        // не ошибка так как описывает формат json схемы для валидации
+        // appchecker CWE-798
         'http://json-schema.org/',
+        // не ошибка так как описывает формат json схемы для валидации
+        // appchecker CWE-798
         'https://json-schema.org/'
     );
 
